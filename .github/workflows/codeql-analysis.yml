@@ -37,7 +37,7 @@ jobs:
        mkdir -p ~/.ssh
        echo "${{ secrets.PRIVATE_QLPACK_DEPLOY_KEY }}" > ~/.ssh/id_rsa
        chmod 600 ~/.ssh/id_rsa
-       git config --global url.ssh://git@github.com/mokrz-enterprise-testing/codeql-private-queries https://github.com/mokrz-enterprise-testing/codeql-private-queries
+       git config --global url."ssh://git@github.com/mokrz-enterprise-testing/codeql-private-queries".insteadOf "https://github.com/mokrz-enterprise-testing/codeql-private-queries".insteadOf
 
     - name: Get custom config
       uses: github/codeql-action/init@v1
