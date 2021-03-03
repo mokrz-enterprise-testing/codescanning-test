@@ -31,6 +31,18 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    
+    - name: Configure access to private QL pack
+      run: |
+       mkdir -p ~/.ssh
+       echo "${{ secrets.PRIVATE_QLPACK_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+       chmod 600 ~/.ssh/id_rsa
+       git config --global url.ssh://git@github.com/mokrz-enterprise-testing/codeql-private-queries https://github.com/mokrz-enterprise-testing/codeql-private-queries
+
+    - name: Get custom config
+      uses: github/codeql-action/init@v1
+      with:
+        config-file: mokrz-enterprise-testing/codescanning-config/.github/codeql/codeql-config.yml@main
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
